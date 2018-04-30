@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 #include <stdlib.h>
 #include <conio.h> 
 using namespace std;
@@ -7,10 +8,13 @@ public:
 
   int urut;
   node *next; 
-}
+}; 
+
+
 node *awal_ptr = NULL;
-  node *posisi;        
-  int option = 0 
+  node *posisi;         
+  int option = 0; 
+
 void tambah_awal_list()
 {
   node *baru;
@@ -32,12 +36,13 @@ void tambah_awal_list()
 
 void menambah_node_di_akhir()
   {
-  node *temp, *temp2
- 
+  node *temp, *temp2;   
   temp = new node; 
   cout << "Masukkan urut     : ";
   cin >>   temp->urut;
   temp->next = NULL; 
+
+
   if (awal_ptr == NULL)
   {
     awal_ptr = temp;
@@ -46,12 +51,12 @@ void menambah_node_di_akhir()
   else
   {
     temp2 = awal_ptr;
-   
+
     while (temp2->next != NULL)
     {
       temp2 = temp2->next; 
-    
+      
     }
   temp2->next = temp;
   }
-
+} 
