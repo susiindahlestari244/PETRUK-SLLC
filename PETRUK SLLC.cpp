@@ -3,22 +3,22 @@
 #include <stdlib.h>
 #include <conio.h> 
 using namespace std;
-class node {
+
+class mahasiswa
+{
 public:
 
   int urut;
-  node *next; 
+  mahasiswa *next; 
 }; 
-
-
-node *awal_ptr = NULL;
-  node *posisi;         
+  mahasiswa *awal_ptr = NULL;
+  mahasiswa *posisi;         
   int option = 0; 
 
 void tambah_awal_list()
 {
-  node *baru;
-  baru = new node;
+  mahasiswa *baru;
+  baru = new mahasiswa;
   cout << "Masukkan Data     : ";
   cin >> baru->urut;
   baru->next = NULL;
@@ -34,11 +34,11 @@ void tambah_awal_list()
   }
 } 
 
-void menambah_node_di_akhir()
+void tambah_mahasiswa_di_akhir()
   {
-  node *temp, *temp2;   
-  temp = new node; 
-  cout << "Masukkan urut     : ";
+  mahasiswa *temp, *temp2;   
+  temp = new mahasiswa; 
+  cout << "Masukkan Data     : ";
   cin >>   temp->urut;
   temp->next = NULL; 
 
@@ -60,3 +60,175 @@ void menambah_node_di_akhir()
   temp2->next = temp;
   }
 } 
+
+void display_list()
+{
+  mahasiswa *temp;
+  temp = awal_ptr;
+  cout << endl;
+  cout << "DATA [";  
+  if (temp == NULL)
+    cout << "Data kosong!" << endl;
+  else
+  {
+    while (temp != NULL)
+    {  
+     
+     cout << "" << temp->urut << ",";
+     
+     if (temp == posisi)
+        cout << "     <<posisi mahasiswa";
+
+     temp = temp->next; 
+    }
+    cout << "] ";  
+    cout << "Akhir list!" << endl;
+  }
+  
+} 
+
+void hapus_awal_mahasiswa()
+{
+  mahasiswa *temp;
+  temp = awal_ptr;
+  awal_ptr = awal_ptr->next;
+  delete temp;
+} 
+
+void hapus_akhir_mahasiswa()
+{
+  mahasiswa *temp1, *temp2;
+  if (awal_ptr == NULL)
+    cout << "Data kosong!" << endl;
+  else
+  {
+    temp1 = awal_ptr;
+    if (temp1->next == NULL)
+    {
+      delete temp1;
+      awal_ptr = NULL;
+    }
+    else 
+    {
+      while (temp1->next != NULL)
+      {
+        temp2 = temp1;
+        temp1 = temp1->next;
+      }
+      delete temp1;
+      temp2->next = NULL;
+    }
+
+   }
+} 
+
+void pindah_posisi_sebelumnya()
+{
+  if (posisi->next == NULL)
+  cout << "Anda berada pada akhir data." << endl;
+  else
+  posisi = posisi->next; 
+} 
+
+void pindah_posisi_berikutnya()
+{
+  if (posisi == awal_ptr)
+    cout << "Anda berada pada awal data" << endl;
+  else
+  {
+   mahasiswa *previous;     
+    previous = awal_ptr; 
+    while (previous->next != posisi) 
+    { 
+      previous = previous->next;
+    }
+    posisi = previous;
+  }
+}
+
+void tambah_data_yang_akan_disisipkan_list()
+{
+  mahasiswa *baru, *bantu;
+  int posisi_sisip;
+  if(awal_ptr != NULL)
+  {
+  
+   
+    cout<<"Akan disisip setelah Data Ke ? : ";
+    cin>>posisi_sisip;
+    baru =new mahasiswa;
+   bantu=awal_ptr;
+     
+    for(int i=1;i<posisi_sisip-1;i++) {
+      if(bantu->next != NULL)
+        bantu=bantu->next;
+      else
+        break; 
+    }
+  cout << "Masukkan Data     : ";
+  cin >> baru->urut;
+  baru->next=bantu->next;
+  bantu->next=baru;
+  }
+  else
+  {
+    cout<<"Maaf data anda belum ada !! silahkan isi data terlebih dulu....";
+    getch();
+  } 
+} 
+
+void Hapus_data_yang_telah_disisipkan_list()
+{
+  int banyakdata,posisi_hapus,poshapus;
+  mahasiswa *hapus, *bantu;
+  if(awal_ptr != NULL)
+  {
+    cout<<" Data yang akan dihapus  : ";
+    cin>>posisi_hapus;
+    banyakdata=1;
+    bantu=awal_ptr;
+    while(bantu->next != NULL)
+    {
+      bantu=bantu->next;
+      banyakdata++;
+    }
+    if((posisi_hapus<1)||(posisi_hapus>banyakdata))
+    {
+      cout<<"Belum ada data !! masukkan Data dula aja...\n";
+    }
+    else
+    {
+      bantu=awal_ptr;
+      poshapus=1;
+      while(poshapus<(posisi_hapus-1))
+      {
+        bantu=bantu->next;
+        poshapus++;
+      }
+      hapus=bantu->next;
+      bantu->next=hapus->next;
+      delete hapus;
+    }
+ }
+ else 
+    cout<<"Maaf data anda belum ada !! silahkan isi data terlebih dulu... ";
+ getch();
+}
+ 
+
+int init(int nilai){
+ mahasiswa *baru;
+  baru = new mahasiswa;
+  baru->urut=nilai;
+  baru->next = NULL;
+  if(awal_ptr == NULL)
+  {
+    awal_ptr=baru;
+    awal_ptr->next = NULL;
+  }
+  else
+  {
+    baru->next = awal_ptr;
+    awal_ptr = baru;
+  }
+}
