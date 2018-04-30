@@ -61,7 +61,7 @@ void tambah_mahasiswa_di_akhir()
   }
 } 
 
-void display_list()
+void tampilkan_list()
 {
   mahasiswa *temp;
   temp = awal_ptr;
@@ -216,7 +216,7 @@ void Hapus_data_yang_telah_disisipkan_list()
 }
  
 
-int init(int nilai){
+int main(int nilai){
  mahasiswa *baru;
   baru = new mahasiswa;
   baru->urut=nilai;
@@ -231,4 +231,6 @@ int init(int nilai){
     baru->next = awal_ptr;
     awal_ptr = baru;
   }
+  
+  return 0;
 }
