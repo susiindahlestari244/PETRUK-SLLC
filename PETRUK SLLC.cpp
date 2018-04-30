@@ -15,7 +15,7 @@ public:
   mahasiswa *posisi;         
   int option = 0; 
 
-void tambah_awal_list()
+void tambah_data_awal_list()
 {
   mahasiswa *baru;
   baru = new mahasiswa;
@@ -34,7 +34,7 @@ void tambah_awal_list()
   }
 } 
 
-void tambah_mahasiswa_di_akhir()
+void tambah_data_mahasiswa_di_akhir()
   {
   mahasiswa *temp, *temp2;   
   temp = new mahasiswa; 
@@ -61,7 +61,7 @@ void tambah_mahasiswa_di_akhir()
   }
 } 
 
-void tampilkan_list()
+void display_list()
 {
   mahasiswa *temp;
   temp = awal_ptr;
@@ -172,7 +172,7 @@ void tambah_data_yang_akan_disisipkan_list()
   }
   else
   {
-    cout<<"Maaf data anda belum ada !! silahkan isi data terlebih dulu....";
+    cout<<"Maaf data anda belum ada ! silahkan isi data terlebih dulu....";
     getch();
   } 
 } 
@@ -216,7 +216,7 @@ void Hapus_data_yang_telah_disisipkan_list()
 }
  
 
-int main(int nilai){
+int init(int nilai){
  mahasiswa *baru;
   baru = new mahasiswa;
   baru->urut=nilai;
@@ -231,6 +231,58 @@ int main(int nilai){
     baru->next = awal_ptr;
     awal_ptr = baru;
   }
+}
+
+int main()
+{
+  cout << "=============================================" << endl;
+  cout <<"Nama :\tMayda Brilliani Fauzi  1717051003"<<endl;
+  cout <<"\tSusi Indah Lestari     1717051035"<<endl;
+  cout <<"\tKhaernun Anisa Ensri   1717051039"<<endl;
+  cout <<"============================================="<<endl;
+  cout << "\tLINKED LIST" << endl;
+  cout << "============================================" << endl;
+  awal_ptr = NULL;
   
-  return 0;
+  init(4);
+  init(5);
+  init(3);
+  init(1);
+  init(5);
+  init(7);
+  init(1);
+  do
+  {
+
+ 
+    display_list();
+    cout << endl;
+    cout << "MENU PILIHAN : " << endl;
+    cout << "0. Keluar program." << endl;
+    cout << "1. Tambah data awal list." << endl;
+    cout << "2. Tambah data akhir list." << endl;
+    cout << "3. Tambah data yang akan disisipkan list."<< endl;
+    cout << "4. Hapus data awal list." << endl;
+    cout << "5. Hapus data akhir list." << endl;
+    cout << "6. Hapus data yang telah disisipkan  list." << endl;
+    cout << endl << " Pilihan >> ";
+    cin >> option; 
+
+switch (option)
+  {
+  case 1 : tambah_data_awal_list(); 
+    break;
+  case 2 : tambah_data_mahasiswa_di_akhir();
+    break;
+  case 3 : tambah_data_yang_akan_disisipkan_list();
+    break;
+  case 4 : hapus_awal_mahasiswa();
+    break;
+  case 5 : hapus_akhir_mahasiswa();
+    break;
+  case 6 : Hapus_data_yang_telah_disisipkan_list();
+   
+  }
+ }  
+while (option != 0); 
 }
