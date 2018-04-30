@@ -1,0 +1,2 @@
+# PETRUK-SLLC
+tugas kelompok
