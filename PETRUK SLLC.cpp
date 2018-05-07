@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstdlib>
-#include <stdlib.h>
-#include <conio.h> 
+#include <stdlib>
+#include <conio> 
 using namespace std;
 
 class mahasiswa
